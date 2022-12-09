@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: eu9.spartan.admin.SpartanAdminGetTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.525 s - in eu9.spartan.admin.SpartanAdminGetTest
