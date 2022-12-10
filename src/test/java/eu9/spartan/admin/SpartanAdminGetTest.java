@@ -36,4 +36,40 @@ public class SpartanAdminGetTest {
                 .and()
                 .contentType(ContentType.JSON);
     }
+    @Test
+    public void getoneSpartan(){
+        given()
+                .accept(ContentType.JSON)
+                .and()
+                .auth().basic("admin","admin")
+                .pathParam("id",15)
+                .when()
+                .get("/api/spartans/{id}");
+//                .then()
+//                .statusCode(200)
+//                .and()
+//                .contentType(ContentType.JSON);
+
+        System.out.println("lastResponse().statusCode() = " + lastResponse().statusCode());
+        System.out.println("lastResponse().path(\"id\") = " + lastResponse().path("id"));
+        String name= lastResponse().jsonPath().getString("name");
+        System.out.println("name = " + name);
+    }
+    @Test
+    public void getoneSpartanTest2(){
+
+        given()
+                .accept(ContentType.JSON)
+                .and()
+                .auth().basic("admin","admin")
+                .pathParam("id",15)
+                .when()
+                .get("/api/spartans/{id}");
+// In serenity assure is soft assure
+        Ensure.that("Status code is 200",validatableResponse -> validatableResponse.statusCode(200));
+        Ensure.that("Content type is Json",validatableResponse -> validatableResponse.contentType(ContentType.JSON));
+        Ensure.that("Id is 15",vRes-> vRes.body("id", is(15)));
+
+    }
+
 }
